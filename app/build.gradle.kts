@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.pre_eclampsiascreener"
+    namespace = "io.github.pideer.pes"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.pre_eclampsiascreener"
+        applicationId = "io.github.pideer.pes"
         minSdk = 27
         targetSdk = 36
         versionCode = 1
