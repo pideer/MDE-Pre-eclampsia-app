@@ -1,5 +1,6 @@
 package com.example.pre_eclampsiascreener.ble.parsers
 
+import android.util.Log
 import com.example.pre_eclampsiascreener.ble.data.TransferServiceData
 import com.example.pre_eclampsiascreener.data.Payload
 import com.example.pre_eclampsiascreener.data.PayloadType
@@ -41,7 +42,6 @@ fun Byte.toPayloadType(): PayloadType = when (this.toInt()) {
 
 fun ByteArray.toSensorData(): SensorData? {
     if (size < SENSOR_SIZE) return null
-    val buf = ByteBuffer.wrap(this).order(ByteOrder.LITTLE_ENDIAN)
     return SensorData(
         this[0].toInt() and 0xFF,
         this[1].toInt() and 0xFF,
@@ -58,4 +58,15 @@ fun ByteArray.toInt(): Int? {
 fun ByteArray.toUInt(): UInt? {
     if (size != UInt.SIZE_BYTES) return null
     return ByteBuffer.wrap(this).order(ByteOrder.LITTLE_ENDIAN).int.toUInt()
+}
+
+fun ByteArray.toFloat(): Float? {
+    Log.d("BleData", this.contentToString())
+    if (size != Float.SIZE_BYTES) {
+        Log.e("parser", "Bad size: $size")
+        return null
+    }
+    val buf = ByteBuffer.wrap(this).order(ByteOrder.LITTLE_ENDIAN)
+
+    return buf.getFloat()
 }

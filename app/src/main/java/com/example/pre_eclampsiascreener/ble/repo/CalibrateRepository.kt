@@ -32,6 +32,10 @@ object CalibrateRepository {
     fun addStreamItem(value: Boolean) =
         _data.update { it.copy(ready = value) }
 
+    fun addStreamItem(value: Float) {
+        _sensor.value += value
+    }
+
     fun clear() =
         _data.update { CalibrateServiceData() }
 

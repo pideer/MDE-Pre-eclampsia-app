@@ -14,4 +14,7 @@
     <string name="battery_full_description">Battery Level Full</string>
 
     <string name="device_connect_button">Connect</string>
+
+    <string name="app_repo_link">https://github.com/toluk-26/MDE-Pre-eclampsia-app</string>
+    <string name="firmware_repo_link">https://github.com/toluk-26/MDE-Pre-eclampsia-firmware</string>
 </resources>

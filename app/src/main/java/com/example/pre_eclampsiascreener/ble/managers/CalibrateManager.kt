@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.pre_eclampsiascreener.ble.Profile
 import com.example.pre_eclampsiascreener.ble.ServiceManager
 import com.example.pre_eclampsiascreener.ble.parsers.toBoolean
+import com.example.pre_eclampsiascreener.ble.parsers.toFloat
 import com.example.pre_eclampsiascreener.ble.repo.CalibrateRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.catch
@@ -84,7 +85,7 @@ class CalibrateManager : ServiceManager {
                     Log.d(TAG, "Starting Stream")
                     streamCharacteristic.subscribe()
                         .mapNotNull {
-                            it.toBoolean()
+                            it.toFloat()
                         }
                         .onEach {
                             Log.d(TAG, "value is $it.")
@@ -95,7 +96,7 @@ class CalibrateManager : ServiceManager {
                         }
                         .catch { e ->
                             e.printStackTrace()
-                            Log.e(TransferManager.Companion.TAG, e.toString())
+                            Log.e(TAG, e.toString())
                         }
                         .launchIn(sscope)
                 }

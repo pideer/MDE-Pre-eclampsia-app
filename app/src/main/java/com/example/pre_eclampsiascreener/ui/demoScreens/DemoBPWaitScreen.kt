@@ -77,7 +77,7 @@ fun DemoBPWaitScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Waiting for stable position",
+                text = "Recording blood pressure…",
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
